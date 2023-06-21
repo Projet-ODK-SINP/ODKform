@@ -59,6 +59,7 @@ Voir [ici](recuperation_des_donnees_dans_postgresql.md)
 # D'autres formulaires…
 A l'automne 2022, les CEN d'Occitanie et de Nouvelle-Aquitaine ont publié le site https://biodiversityforms.org afin de partager des formulaires XLSForm relatifs à la conservation de la nature et à la connaissance des espèces et des habitats.
 
-Il serait intéressant et utile que les formulaires développés pour des protocoles standards y soit référencés et partagés. Une mutualisation des formulaires et des traitements associés aux données bénéficieraient à de nombreux acteurs.
+Il serait intéressant et utile que les formulaires développés pour des protocoles standards y soient référencés et partagés.
+Une mutualisation des formulaires et des traitements associés aux données collectées bénéficieraient à de nombreux acteurs.
 
 ![biodiversityforms.org](./biodiversityforms.png)
