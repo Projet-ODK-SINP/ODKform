@@ -48,7 +48,7 @@ Les requêtes SQL permettant de générer, à partir de TAXREF, les référentie
 Il est accessible à l'adresse suivante : 
 Un utilisateur mobile a été créé, le QRCode a flashé avec ODK Collect pour tester le formulaire est ci-dessous :
 
-# Exemples d'intégration des données recueillies à un SI
+# Intégration des données recueillies à un SI
 ## A l'aide de FME ou d'un ETL
 Voir [ici](./recuperation_des_donnees_api_et_etl.md)
 ## Dans PostgreSQL à l'aide de fonction pl-python
