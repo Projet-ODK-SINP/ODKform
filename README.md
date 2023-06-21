@@ -4,7 +4,7 @@ Travail réalisé dans le cadre de l'[Appel à projet 2021 pour l'amélioration 
 
 <br>
 
-![SINP](./SINP-2020-RVB-fond-blanc.jpg)
+![SINP](./images_logos/SINP-2020-RVB-fond-blanc.jpg)
 
 _________
 
@@ -54,7 +54,7 @@ Voir [ici](./recuperation_des_donnees_api_et_etl.md)
 ## Dans PostgreSQL à l'aide de fonction pl-python
 Voir [ici](recuperation_des_donnees_dans_postgresql.md)
 <br>
-![odk_postgreql](./ODK_PostgreSQL.png)
+![odk_postgreql](./images_logos/ODK_PostgreSQL.png)
 
 # D'autres formulaires…
 A l'automne 2022, les CEN d'Occitanie et de Nouvelle-Aquitaine ont publié le site https://biodiversityforms.org afin de partager des formulaires XLSForm relatifs à la conservation de la nature et à la connaissance des espèces et des habitats.
@@ -62,4 +62,4 @@ A l'automne 2022, les CEN d'Occitanie et de Nouvelle-Aquitaine ont publié le si
 Il serait intéressant et utile que les formulaires développés pour des protocoles standards y soient référencés et partagés.
 Une mutualisation des formulaires et des traitements associés aux données collectées bénéficieraient à de nombreux acteurs.
 
-![biodiversityforms.org](./biodiversityforms.png)
+![biodiversityforms.org](./images_logos/biodiversityforms.png)
