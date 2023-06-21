@@ -53,5 +53,6 @@ Un utilisateur mobile a été créé, le QRCode a flashé avec ODK Collect pour 
 Voir [ici](./recuperation_des_donnees_api_et_etl.md)
 ## Dans PostgreSQL à l'aide de fonction pl-python
 Voir [ici](recuperation_des_donnees_dans_postgresql.md)
+<br>
 ![odk_postgreql](./ODK_PostgreSQL.png)
 
