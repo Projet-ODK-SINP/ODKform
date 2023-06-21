@@ -1,6 +1,6 @@
 # Récupération des données collectées dans une base de données PostGIS
 
-Utilisation de [pl-pyODK](https://github.com/mathieubossaert/pl-pyodk)
+Utilisation de [pl-pyODK](https://github.com/mathieubossaert/pl-pyodk) : https://github.com/mathieubossaert/pl-pyodk/blob/main/README_FR.md
 
 ## Edition du fichier de configuration de pyODK
 
@@ -138,6 +138,7 @@ CREATE TABLE IF NOT EXISTS odk_central.occ_tax_odk_observations_data
     lb_nom_fungi text COLLATE pg_catalog."default",
     lb_nom_plantae text COLLATE pg_catalog."default",
     lib_obs text COLLATE pg_catalog."default",
+    nomcite text COLLATE pg_catalog."default",
     nomorganisme_determinateur text COLLATE pg_catalog."default",
     objet_denombrement text COLLATE pg_catalog."default",
     obs_contexte text COLLATE pg_catalog."default",
@@ -189,13 +190,38 @@ classDiagram
 
 Reconstituer les données d'observation revient donc à faire une requête avec 2 jointures :
 ```sql
-SELECT observations.data_id, identite, "instanceID", "instanceName", COALESCE(mail, email_utilisateur) AS email, nomOrganisme, autre_nomOrganisme, choix, date_heure, "formVersion", "reviewState", "submissionDate", "updatedAt",
--- les attributs de l'emplacement
-affiche_recap_obs_especes, heure_localite,latitude, ligne, liste_especes_observees, longitude, methode_georef, nature_objetgeo, nom_lieu, "observations@odata.navigationLink", point, point_auto_10, point_auto_15, point_auto_5, polygone, precision_geometrie,
--- les attributs de l'observation
-altitudemax, altitudemin, altitudemoyenne, autre_nomorganisme_determinateur, cd_nom_animalia, cd_nom_fungi, cd_nom_plantae, commentaire, datedebut, date_determination, datefin, denombrement, denombrementmax, denombrementmin, determinateur, echantillon, especes_observees, heuredebut, heurefin, idsinp_occtax, lb_nom_animalia, lb_nom_fungi, lb_nom_plantae, lib_obs, nomorganisme_determinateur, objet_denombrement, obs_contexte, obs_description, obs_technique, occ_comportement, occ_etat_biologique, occ_methode_determination, occ_naturalite, occ_sexe, occ_stade_vie, occ_statut_biogeographique, occ_statut_biologique, precision_altitude, precision_determination, precision_profondeur, preuve_existante, preuve_non_numerique, prise_image, profondeurmax, profondeurmin, profondeurmoyenne, statut_observation, type_denombrement, type_observation, url_preuve_numerique, version_taxref
+CREATE VIEW toutes_occurences_taxon AS
+SELECT idsinp_occtax, identite, COALESCE(mail, email_utilisateur) AS email, nomOrganisme, autre_nomOrganisme, date_heure,
+/* les attributs de l'emplacement */
+heure_localite, nom_lieu, methode_georef, longitude, latitude, nature_objetgeo,
+st_force2d(COALESCE(st_setsrid(st_makepoint(longitude::numeric, latitude::numeric),4326),st_geomfromgeojson(replace(COALESCE(point_auto_5, point_auto_10, point_auto_15, point, ligne, polygone),'\',''))))::geometry(geometry,4326) as geometrie,
+precision_geometrie,
+/* les attributs de l'observation */
+type_observation, datedebut, heuredebut, nomcite, statut_observation, type_denombrement, denombrement, denombrementmin, denombrementmax, objet_denombrement, obs_description, obs_contexte, 
+obs_technique, occ_methode_determination, occ_etat_biologique, occ_naturalite, occ_sexe, occ_stade_vie, occ_comportement, occ_statut_biogeographique, occ_statut_biologique, preuve_existante, 
+prise_image, echantillon, url_preuve_numerique, preuve_non_numerique, precision_altitude, altitudemin, altitudemoyenne, altitudemax, profondeurmin, profondeurmoyenne, profondeurmax, 
+datefin, heurefin, date_determination, determinateur, nomorganisme_determinateur, autre_nomorganisme_determinateur, commentaire
+/* les question posées dans le formulaire pour le choix du taxon, inutiles ici car récupérées dans nomcite */
+--cd_nom_animalia, lb_nom_animalia, cd_nom_fungi, lb_nom_fungi, cd_nom_plantae, lb_nom_plantae, version_taxref
 FROM odk_central.occ_tax_odk_submissions_data AS submissions
 JOIN odk_central.occ_tax_odk_emplacements_data AS emplacements ON "__Submissions-id" = submissions.__id
 JOIN odk_central.occ_tax_odk_observations_data AS observations ON "__Submissions-emplacements-id" = emplacements.__id
 ```
 
+Cette table brute peut maintenant servir de base à tous les traitements utiles :
+
+* Créer des vues (ou des vues matérialisées) en fonction du règne (question **type_observation**)  et du type de géométrie.
+```sql
+CREATE VIEW toutes_occurences_ponctuelles_faune AS 
+SELECT * FROM toutes_occurences_taxon
+WHERE type_observation = 'animalia' AND st_geometrytype(geometrie) ILIKE '%point%';
+
+CREATE VIEW toutes_occurences_lineaires_flore AS 
+SELECT * FROM toutes_occurences_taxon
+WHERE type_observation = 'plantae' AND st_geometrytype(geometrie) ILIKE '%linestring%';
+
+CREATE VIEW toutes_occurences_surfacique_fonge AS 
+SELECT * FROM toutes_occurences_taxon
+WHERE type_observation = 'fungi' AND st_geometrytype(geometrie) ILIKE '%polygon%';
+```
+* Les afficher dans QGIS...
