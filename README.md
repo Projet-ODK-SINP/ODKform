@@ -42,7 +42,7 @@ Disponible [ici](https://github.com/Projet-ODK-SINP/ODKform/blob/main/OccTaxODK.
 
 Un tutoriel pour sa prise en main est disponible [ici](./manuel_utilisation.md)
 
-Les requêtes SQL permettant de générer, à partir de TAXREF, les référentiels qui sont utilisés par le formulaire sont proposées [ici](./sources/taxref/generation_taxref_odk.sql).
+Les requêtes SQL permettant de générer, à partir de TAXREF v16, les référentiels qui sont utilisés par le formulaire, sont proposées [ici](./sources/taxref/generation_taxref_odk.sql).
 
 # Mise en place d'un serveur ODK Central
 Il est accessible à l'adresse suivante : 
@@ -56,3 +56,9 @@ Voir [ici](recuperation_des_donnees_dans_postgresql.md)
 <br>
 ![odk_postgreql](./ODK_PostgreSQL.png)
 
+# D'autres formulaires…
+A l'automne 2022, les CEN d'Occitanie et de Nouvelle-Aquitaine ont publié le site https://biodiversityforms.org afin de partager des formulaires XLSForm relatifs à la conservation de la nature et à la connaissance des espèces et des habitats.
+
+Il serait intéressant et utile que les formulaires développés pour des protocoles standards y soit référencés et partagés. Une mutualisation des formulaires et des traitements associés aux données bénéficieraient à de nombreux acteurs.
+
+![biodiversityforms.org](./biodiversityforms.png)
