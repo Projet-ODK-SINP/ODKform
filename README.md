@@ -27,12 +27,31 @@ Proposer un formulaire naturaliste pour [ODK Collect](https://docs.getodk.org/co
 Les données sont consolidées au sein d’un serveur « [ODK Central](https://docs.getodk.org/central-intro/) » qui est interrogeable via une [API REST « ODATA »](https://odkcentral.docs.apiary.io/) que nous proposons de mettre en place pour la durée du projet, le temps qu’une institution propose ce service.
 Il pourra servir de démonstrateur aux structures porteuses du SINP (pôles thématiques, plateformes régionales, INPN).
 # 2 stratégies possibles
-1. adapter un formualire existant décrit [ici](https://si.cen-occitanie.org/formulaire_de_terrain_opendatakit_2020-01-24/) et [là](https://forum.getodk.org/t/odk-to-collect-species-and-habitats-localities-as-pressure-and-threats-to-ecosystems/26332
+1. adapter un formulaire existant décrit [ici](https://si.cen-occitanie.org/formulaire_de_terrain_opendatakit_2020-01-24/) et [là](https://forum.getodk.org/t/odk-to-collect-species-and-habitats-localities-as-pressure-and-threats-to-ecosystems/26332
 ).
 2. créer un formulaire ex-nihilo sur la base du standard
 **C'est le choix que nous avons fait et qui est présenté ici**
 
-C'est la première stratégie que nous allons mettre en oeuvre dans un premier temps.
+C'est la première stratégie que nous allons mettre en œuvre dans un premier temps.
 
 # Développement d'un formulaire ex-nihilo
-Le standard présenté [ici](https://standards-sinp.mnhn.fr/wp-content/uploads/sites/16/versionhtml/occtax_v2/index.htm) a été transposé dans un [fichier excel de questions](https://github.com/Projet-ODK-SINP/standart/blob/main/occtaxODK.xlsx). Les nommenclatures ont été transposées en csv [ici](https://github.com/Projet-ODK-SINP/standart/blob/main/nomenclatures_sinp.csv) . Elle seront la base de la feuille choices de notre formulaire.
+Le standard présenté [ici](https://standards-sinp.mnhn.fr/wp-content/uploads/sites/16/versionhtml/occtax_v2/index.htm) a été transposé dans un [fichier excel de questions](https://github.com/Projet-ODK-SINP/standart/blob/main/occtaxODK.xlsx). Les nomenclatures ont été transposées en csv [ici](https://github.com/Projet-ODK-SINP/standart/blob/main/nomenclatures_sinp.csv) . Elle sont la base de la feuille "_choices_" de notre formulaire.
+
+## Le formulaire OccTaxODK
+Disponible [ici](https://github.com/Projet-ODK-SINP/ODKform/blob/main/OccTaxODK.xlsx) il peut être édité avec excel ou LibreOffice. Il est documenté (colonnes SINP_concept_principal, SINP_attribut	et SINP_description)
+
+Un tutoriel pour sa prise en main est disponible [ici](./manuel_utilisation.md)
+
+Les requêtes SQL permettant de générer, à partir de TAXREF, les référentiels qui sont utilisés par le formulaire sont proposées [ici](./sources/taxref/generation_taxref_odk.sql).
+
+# Mise en place d'un serveur ODK Central
+Il est accessible à l'adresse suivante : 
+Un utilisateur mobile a été créé, le QRCode a flashé avec ODK Collect pour tester le formulaire est ci-dessous :
+
+# Exemples d'intégration des données recueillies à un SI
+## A l'aide de FME ou d'un ETL
+Voir [ici](./recuperation_des_donnees_api_et_etl.md)
+## Dans PostgreSQL à l'aide de fonction pl-python
+Voir [ici](recuperation_des_donnees_dans_postgresql.md)
+![odk_postgreql](./ODK_PostgreSQL.png)
+
