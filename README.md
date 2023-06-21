@@ -22,17 +22,20 @@ Les CEN d’Occitanie et de Nouvelle-Aquitaine utilisent la solution depuis 2015
 * gain de qualité de la donnée (référentiels à jour et saisie dirigée limitent les erreurs)…
 [XLSForm](https://xlsform.org/en/) est la norme, dérivée d’XForms, qui permet de décrire, sans connaissance informatique particulière, les formulaires affichés par https://docs.getodk.org/collect-intro/ (et KoboToolbox, Enketo, ESRI…).
 
-Proposer un formulaire naturaliste pour [ODK Collect](https://docs.getodk.org/collect-intro/), conforme au standard du SINP, dans le [XLSForm](https://xlsform.org/en/), permettrait de réduire très fortement le temps consacré à la mise en conformité des données. Le format XLSForm facilitera aussi son appropriation par des structures souhaitant développer leur propre formulaire.
+Proposer un formulaire naturaliste pour [ODK Collect](https://docs.getodk.org/collect-intro/), conforme au standard du SINP, dans le [XLSForm](https://xlsform.org/en/), permettrait de réduire très fortement le temps consacré à la mise en conformité des données.
+Le format XLSForm facilitera aussi son appropriation par des structures souhaitant développer leur propre formulaire.
 
 Les données sont consolidées au sein d’un serveur « [ODK Central](https://docs.getodk.org/central-intro/) » qui est interrogeable via une [API REST « ODATA »](https://odkcentral.docs.apiary.io/) que nous proposons de mettre en place pour la durée du projet, le temps qu’une institution propose ce service.
+
 Il pourra servir de démonstrateur aux structures porteuses du SINP (pôles thématiques, plateformes régionales, INPN).
-# 2 stratégies possibles
+
+# Deux stratégies possibles
 1. adapter un formulaire existant décrit [ici](https://si.cen-occitanie.org/formulaire_de_terrain_opendatakit_2020-01-24/) et [là](https://forum.getodk.org/t/odk-to-collect-species-and-habitats-localities-as-pressure-and-threats-to-ecosystems/26332
 ).
 2. créer un formulaire ex-nihilo sur la base du standard
 **C'est le choix que nous avons fait et qui est présenté ici**
 
-C'est la première stratégie que nous allons mettre en œuvre dans un premier temps.
+C'est la seconde stratégie que nous adoptée pour le projet.
 
 # Développement d'un formulaire ex-nihilo
 Le standard présenté [ici](https://standards-sinp.mnhn.fr/wp-content/uploads/sites/16/versionhtml/occtax_v2/index.htm) a été transposé dans un [fichier excel de questions](https://github.com/Projet-ODK-SINP/standart/blob/main/occtaxODK.xlsx). Les nomenclatures ont été transposées en csv [ici](https://github.com/Projet-ODK-SINP/standart/blob/main/nomenclatures_sinp.csv) . Elle sont la base de la feuille "_choices_" de notre formulaire.
