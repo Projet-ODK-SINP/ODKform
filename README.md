@@ -30,6 +30,7 @@ Il pourra servir de démonstrateur aux structures porteuses du SINP (pôles thé
 1. adapter un formualire existant décrit [ici](https://si.cen-occitanie.org/formulaire_de_terrain_opendatakit_2020-01-24/) et [là](https://forum.getodk.org/t/odk-to-collect-species-and-habitats-localities-as-pressure-and-threats-to-ecosystems/26332
 ).
 2. créer un formulaire ex-nihilo sur la base du standard
+**C'est le choix que nous avons fait et qui est présenté ici**
 
 C'est la première stratégie que nous allons mettre en oeuvre dans un premier temps.
 
