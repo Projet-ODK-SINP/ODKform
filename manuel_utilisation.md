@@ -51,7 +51,7 @@ Ces préférences peuvent être modifiées à chaque démarrage de formulaire.
 
 * Choix du taxon
 > **Note**
-> Taper les 3 premières lettres du taxon rechercher pour voir apparaître les propositions.
+> Taper les 3 premières lettres du taxon recherché pour voir apparaître les propositions.
 > Les noms valides sont mis en exergue.
 
 ![Screenshot_20230620-192657.png](images_logos/capture_d_ecrans/Screenshot_20230620-192657.png)
