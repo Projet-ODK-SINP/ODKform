@@ -5,6 +5,12 @@ Il vous permets d'accéder aux formulaires mis à votre disposition sur le serve
 Vous pouvez connecter votre application à plusieurs projets/serveurs en utilisant différents QRCode
 Cela vous permet par exemple de collecter des données pour différentes structures, ou de participer à plusieurs groupes thématiques (ex 1 QRCode "entomologie" et 1 QRCode "Bota")
 ## Utilisation
+#### Premier chargement du formulaire
+Lors de la première utilisation du formulaire, les référentiels taxonomiques vont être transformés par l'application en petites bases de données.
+Cela ne se produit qu'à la toute première utilisation du formulaire et après sa mise à jour éventuelle
+
+![Screenshot_20230622-193136.png](images_logos/capture_d_ecrans/Screenshot_20230622-193136.png)
+
 #### 1. Page d'accueil du formulaire
 
 ![Screenshot_20230620-192455.png](images_logos/capture_d_ecrans/Screenshot_20230620-192455.png)
