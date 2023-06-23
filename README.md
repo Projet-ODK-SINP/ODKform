@@ -54,7 +54,7 @@ Il est accessible à l'adresse suivante :
 https://aap-odk-sinp.cen-nouvelle-aquitaine.dev
 </br>
 
-Un utilisateur mobile _naturaliste_ a été créé, le QRCode a flasher avec ODK Collect pour tester le formulaire sur son téléphone est celui ci-dessous :
+Un utilisateur mobile _naturaliste_ a été créé, le QRCode à flasher avec ODK Collect pour tester le formulaire sur son téléphone est celui ci-dessous :
 <br>
 
 ![QrCode](./images_logos/QRCode_naturaliste.png)
