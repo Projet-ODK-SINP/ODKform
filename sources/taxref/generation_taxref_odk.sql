@@ -134,7 +134,7 @@ WITH total AS (
       )
     END AS lb_nom_key,
     cd_nom AS cd_nom_key,
-    CONCAT_ws('!', lb_nom, cd_nom) AS lb_cd_nom_key,
+    nom_complet AS lb_cd_nom_key,
     regne,
     group2_inpn AS groupe,
     group1_inpn,
