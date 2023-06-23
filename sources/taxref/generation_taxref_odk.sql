@@ -128,10 +128,9 @@ WITH total AS (
     rang,
     nom_complet,
     CASE
-      WHEN cd_nom = cd_ref THEN CONCAT (nom_complet,' ','<b><span style="color:#02138e">(nom valide)</span></b>'
-      )
-      ELSE CONCAT(nom_complet,' ','<b><span style="color:red"> (syn. de ',nom_valide,')','</span></b>'
-      )
+      WHEN cd_nom = cd_ref 
+		THEN CONCAT (nom_complet,' ','<b><span style="color:#02138e">(nom valide)</span></b>')
+      	ELSE CONCAT(nom_complet,' ','<b><span style="color:red"> (syn. de ',nom_valide,')','</span></b>')
     END AS lb_nom_key,
     cd_nom AS cd_nom_key,
     nom_complet AS lb_cd_nom_key,
@@ -147,29 +146,27 @@ WITH total AS (
           OR lb_nom ILIKE '% x %'
           OR lb_nom ILIKE '%var.%'
         ) THEN NULL :: text
-        ELSE trim(
-          CONCAT(left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 1), 3),' ',left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 2), 3),' ',left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 3), 3)
-)
-        )
+        ELSE trim(CONCAT(left(split_part(lb_nom, ' ', 1), 3),' ',left(split_part(lb_nom, ' ', 2), 3),' ',left(split_part(lb_nom, ' ', 3), 3)))
       END
     ) AS code_espece_key
   FROM
     inpn.taxref_16 taxref
-  WHERE regne IN ('Plantae') 
   UNION
-  SELECT rang, nom_complet,
+  SELECT
+    rang,
+    nom_complet,
     CASE
       WHEN nom_vern in (
         SELECT nom_vern
-        FROM inpn.taxref
+        FROM inpn.taxref_16 taxref
         WHERE rang = 'ES'
         group by nom_vern
         having count (distinct cd_ref) > 1
-      ) THEN CONCAT(nom_vern,' ','<b><span style="color:#ff7e06">(',lb_nom,')</span></b>')
+      ) THEN CONCAT(nom_vern,' ','<b><span style="color:#ff7e06">(',nom_complet,')</span></b>')
       ELSE CONCAT(nom_vern,' -> ',nom_complet,' ','<b><span style="color:#02138e">(nom valide)</span></b>')
     END AS lb_nom_key,
     cd_nom AS cd_nom_key,
-    CONCAT_ws('!', lb_nom, cd_nom) AS lb_cd_nom_key,
+    nom_complet AS lb_cd_nom_key,
     regne,
     group2_inpn AS groupe,
     group1_inpn,
@@ -183,15 +180,18 @@ WITH total AS (
           OR lb_nom ILIKE '%var.%'
         ) 
 		THEN NULL :: text
-        ELSE trim(CONCAT(left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 1), 3),' ',left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 2), 3),' ',left(split_part(replace(lb_nom, ' subsp.', ''), ' ', 3), 3)))
+        ELSE trim(CONCAT(left(split_part(lb_nom, ' ', 1), 3),' ',left(split_part(lb_nom, ' ', 2), 3),' ',left(split_part(lb_nom, ' ', 3), 3)))
       END
     ) AS code_espece_key
   FROM
     inpn.taxref_16 taxref
-  WHERE cd_nom = cd_ref AND regne IN ('Plantae') AND nom_vern IS NOT NULL AND rang = 'ES'
+  WHERE
+    cd_nom = cd_ref
+    AND nom_vern IS NOT NULL
+    AND rang = 'ES'
 )
-SELECT
-  DISTINCT lb_nom_key,
+SELECT DISTINCT 
+  lb_nom_key,
   cd_nom_key,
   lb_cd_nom_key,
   regne AS regne_key,
@@ -199,7 +199,7 @@ SELECT
   group1_inpn,
   code_espece_key,
   16 AS version_taxref,
-  dense_rank() Over(
+  rank() Over(
     ORDER BY
       CASE
         WHEN rang = 'GN' THEN 1
@@ -213,9 +213,11 @@ SELECT
   ) AS sortby
 FROM
   total
-WHERE regne IN ('Plantae') AND fr IN ('P', 'E', 'S', 'C', 'I', 'J', 'M', 'B', 'D')
+WHERE
+  regne IN ('Fungi')
+  AND fr IN ('P', 'E', 'S', 'C', 'I', 'J', 'M', 'B', 'D')
 ORDER BY
-  sortby
+  sortby;
 
 /* Fungi */
 
