@@ -2,23 +2,28 @@
 
 Utilisation de [pl-pyODK](https://github.com/mathieubossaert/pl-pyodk) : https://github.com/mathieubossaert/pl-pyodk/blob/main/README_FR.md
 
+> **Note**
+> Un utilisateur spécifique a été créé sur le serveur de démonstration.
+> C'est utilisateur n'a aucun privilège sur le serveur ODK Central et est simple "lecteur de données" sur le projet qui contient le formulaire.
+> Il vous pemrettra de récupérer toutes les données saisies avec ce formulaire dans le cadre de ce projet, en suiviant les instructions ci-dessous.
+
 ## Edition du fichier de configuration de pyODK
 
 ```toml
 [central]
 base_url = "https://aap-odk-sinp.cen-nouvelle-aquitaine.dev"
-username = "xx@yyyyyyy.org"
-password = "xxxxxxxxxxxxxx"
+username = "lecteur@aap-odk-sinp.dev"
+password = "ve1pMXTnHlRwu9Ee"
 default_project_id = 1
 ```
 
 ```sql
 SELECT plpyodk.odk_central_to_pg(
-	1,                    -- the project id
-	'occ_tax_odk/draft'::text,     -- form ID
-	'odk_central'::text,  -- schema where to create tables and store data
-	'',                   -- the filter "clause" used in the API call
-	'point_auto_5,point_auto_10,point_auto_15,point,ligne,polygone'::text -- json (geo)columns to ignore
+	1,								--> the project id
+	'occ_tax_odk/draft'::text,		--> form ID
+	'odk_central'::text,			--> schema where to create tables and store data
+	'',								--> the filter "clause" used in the API call
+	'point_auto_5,point_auto_10,point_auto_15,point,ligne,polygone'::text		--> json (geo)columns to ignore
 );
 ```
 Cela va automatiquement :
