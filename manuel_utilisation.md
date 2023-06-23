@@ -4,12 +4,29 @@
 Il vous permets d'accéder aux formulaires mis à votre disposition sur le serveur ODK Central
 Vous pouvez connecter votre application à plusieurs projets/serveurs en utilisant différents QRCode
 Cela vous permet par exemple de collecter des données pour différentes structures, ou de participer à plusieurs groupes thématiques (ex 1 QRCode "entomologie" et 1 QRCode "Bota")
+
+![QRCode_naturaliste.png](images_logos/QRCode_naturaliste.png)
+
+#### Cliquez sur le bouton "Configurer par QR code"
+
+![Screenshot_20230623-141543.png](images_logos/capture_d_ecrans/Screenshot_20230623-141543.png)
+
+#### Flashez le QR code ci-dessus
+
+![Screenshot_20230623-141612.png](images_logos/capture_d_ecrans/Screenshot_20230623-141612.png)
+
+#### Vous pouvez maintenant accéder au formulaire
+
+![Screenshot_20230623-142119.png](images_logos/capture_d_ecrans/Screenshot_20230623-142119.png)
+
 ## Utilisation
 #### Premier chargement du formulaire
 Lors de la première utilisation du formulaire, les référentiels taxonomiques vont être transformés par l'application en petites bases de données.
 Cela ne se produit qu'à la toute première utilisation du formulaire et après sa mise à jour éventuelle
 
 ![Screenshot_20230622-193136.png](images_logos/capture_d_ecrans/Screenshot_20230622-193136.png)
+
+Voir une vidéo de la première utilisation du formulaire [ici](./images_logos/capture_d_ecrans/configuration_ODK_Collect.mp4)
 
 #### 1. Page d'accueil du formulaire
 
