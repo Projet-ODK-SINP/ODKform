@@ -3,9 +3,9 @@
 Utilisation de [pl-pyODK](https://github.com/mathieubossaert/pl-pyodk) : https://github.com/mathieubossaert/pl-pyodk/blob/main/README_FR.md
 
 > **Note**<br>
-> Un utilisateur spécifique a été créé sur le serveur de démonstration.
-> Cet utilisateur n'a aucun privilège sur le serveur ODK Central et est simple "lecteur de données" sur le projet qui contient le formulaire.
-> Il vous pemrettra de récupérer toutes les données saisies avec ce formulaire dans le cadre de ce projet, en suiviant les instructions ci-dessous.
+> Un utilisateur spécifique a été créé sur le serveur de démonstration.<br>
+> Il n'a aucun privilège sur le serveur ODK Central et est simplement "lecteur de données" sur le projet qui contient le formulaire.<br>
+> Il vous pemrettra de récupérer toutes les données saisies avec ce formulaire, en suivant les instructions ci-dessous.
 
 ## Edition du fichier de configuration de pyODK
 
