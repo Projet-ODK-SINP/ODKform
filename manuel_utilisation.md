@@ -19,7 +19,7 @@ Cela vous permet par exemple de collecter des données pour différentes structu
 
 ![Screenshot_20230623-142119.png](images_logos/capture_d_ecrans/Screenshot_20230623-142119.png)
 
-## Utilisation
+## Utilisation du formulaire
 #### Premier chargement du formulaire
 Lors de la première utilisation du formulaire, les référentiels taxonomiques vont être transformés par l'application en petites bases de données.
 Cela ne se produit qu'à la toute première utilisation du formulaire et après sa mise à jour éventuelle
