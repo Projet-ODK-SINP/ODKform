@@ -214,7 +214,7 @@ SELECT DISTINCT
 FROM
   total
 WHERE
-  regne IN ('Fungi')
+  regne IN ('Plantae')
   AND fr IN ('P', 'E', 'S', 'C', 'I', 'J', 'M', 'B', 'D')
 ORDER BY
   sortby;
